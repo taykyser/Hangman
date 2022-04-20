@@ -1,6 +1,7 @@
 
 import random
 
+# Builds out the hangman based on guesses.
 HANGMAN_PICS = ['''
    +---+
        |
@@ -39,20 +40,24 @@ HANGMAN_PICS = ['''
        ==='''
        ]
 
+# Word bank for potential words the user will get in a game.
 words = 'basketball football hockey tennis soccer'.split(' ')
 
 def startGame():
     # This is the welcome function and asks the user if they want to play.
     return input('Welcome to Hangman! Do you want to play? (yes or no)\n').lower().startswith('y')
 
+# Gets random word from the word bank.
 def getRandomWord(words):
     index = random.randint(0, len(words) - 1)
     return words[index]
 
+# Creates the display that the users will see while playing.
 def displayBoard(incorrectLetters, correctLetters, chosenWord):
     print(HANGMAN_PICS[len(incorrectLetters)])
     print()
     
+    # Prints the incorrect letter in a line on display board to help prevent double guessing.
     print('Incorrect letters:', end=' ')
     for letter in incorrectLetters:
         print(letter, end=' ')
